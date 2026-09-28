@@ -12,7 +12,7 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 ADMIN_ID = int(os.getenv("ADMIN_ID", "0"))
 
 logging.basicConfig(level=logging.INFO)
-bot = Bot(token="8520001271:AAEKqxxxm9wP7MDzF1b3RR-tp1ohDcLWIUs")
+bot = Bot(token="BOT_TOKEN")
 dp = Dispatcher(storage=MemoryStorage())
 
 class Booking(StatesGroup):
