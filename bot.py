@@ -92,6 +92,7 @@ async def process_phone(message: types.Message, state: FSMContext):
     await message.answer("Спасибо! ✅\nЗаявка принята.", reply_markup=start_kb)
 
 async def main():
+    await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
