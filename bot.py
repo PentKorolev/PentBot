@@ -90,7 +90,13 @@ async def process_phone(message: types.Message, state: FSMContext):
     )
     await bot.send_message(ADMIN_ID, booking_text)
     await message.answer("Спасибо! ✅\nЗаявка принята.", reply_markup=start_kb)
-
+    
+@dp.message(F.chat.type.in_({"group", "supergroup"}), F.message_thread_id == 1)
+async def auto_delete_general(message: types.Message):
+    try:
+        await message.delete()
+    except Exception as e:
+        logging.error(f"Не удалось удалить сообщение: {e}")
 async def main():
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
